@@ -51,7 +51,7 @@ app.layout = html.Div(style={
         dcc.Input(id="input2", placeholder="Age", type="number", style=style1),
         dcc.Input(id="input3", placeholder="ID", type="number", style=style1),
         html.Br(),
-        dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"),
+        dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"}),
         html.Br(), html.Br(),
         html.Div(id="div")
     ])
