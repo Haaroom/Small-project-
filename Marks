@@ -1,1 +1,86 @@
+import dash
+from dash import html, dcc, Input, Output, State,dash_table
+import dash_bootstrap_components as dbc
+import sqlite3
+import os
+if not os.path.exists("students.db"):
+    conn = sqlite3.connect("students.db")
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE studentsmarks (
+            name TEXT NOT NULL,
+            math INTEGER NOT NULL,
+            science INTEGER NOT NULL, 
+            social INTEGER NOT NULL, 
+            english INTEGER NOT NULL, 
+            tamil  INTEGER NOT NULL           
+        )
+    ''')
+    conn.commit()
+    conn.close()
+style1 = {
+    "height": "30px",
+    "width": "80%",
+    "backgroundColor": "white",
+    "color": "black",
+    "marginBottom": "10px",
+    "borderRadius": "10px",
+    "padding": "5px"
+}
+
+style2 = {
+    "height": "600px",
+    "width": "300px",
+    "borderRadius": "10px",
+    "backgroundColor": "rgb(51, 42, 41)",
+    "display": "flex",
+    "flexDirection": "column",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "boxShadow": "0px 0px 10px white",
+    "padding": "20px"
+}
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
+dash.register_page(__name__, path="/marks/") 
+
+app.layout = html.Div(style={
+    "display": "flex",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "height": "100vh"
+}, children=[
+    html.Div(style=style2, children=[
+        html.H3("Student Registration"),
+        dcc.Input(id="input1", placeholder="Name", style=style1),
+        dcc.Input(id="input2", placeholder="maths", style=style1),
+        dcc.Input(id="input3", placeholder="science", style=style1),
+        dcc.Input(id="input4", placeholder="social", style=style1),
+        dcc.Input(id="input5", placeholder="english", style=style1),
+        dcc.Input(id="input6", placeholder="tamil", style=style1),        
+        html.Br(),
+        dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"),
+        html.Br(), html.Br(),
+        html.Div(id="div")
+    ])
+])
+
+@app.callback(
+    Output("div", "children"),
+    Input("button1", "n_clicks"),
+    State("input1", "value"),
+    State("input2", "value"),
+    State("input3", "value"), 
+    State("input4", "value"), 
+    State("input5", "value"), 
+    State("input6", "value")
+)
+def save(n_clicks, name,math, science, social,english,tamil):
+    if n_clicks > 0 and name and math and science and social and english and tamil:
+        conn = sqlite3.connect('students.db')
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO studentsmarks (name, math,science, social, english, tamil) VALUES (?,?,?,?,?,?)", (name,math,science social,english, tamil)) 
+        conn.commit()
+        conn.close()
+        return f"Saved: {name} marks"
+    return ""
 
