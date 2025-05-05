@@ -60,9 +60,9 @@ app.layout = html.Div(style={
 
 @app.callback(
     Output("div", "children"),
-    Output("input1", "children"),
-    Output("input2", "children"),
-    Output("input3", "children"),
+    Output("input1", "value"),
+    Output("input2", " value"),
+    Output("input3", "value"),
     Input("button1", "n_clicks"),
     State("input1", "value"),
     State("input2", "value"),
