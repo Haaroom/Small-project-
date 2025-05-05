@@ -59,6 +59,7 @@ app.layout = html.Div(style={
         dcc.Input(id="input6", placeholder="tamil", style=style1),        
         html.Br(),
         dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"}),
+        html.A("HOME",href="/main",style={"height":"30px","width":"100px","backgroundColor":"black","color":"white","borderRadius":"10px","textDecoration":"none"})
         html.Br(), html.Br(),
         html.Div(id="div")
     ])
@@ -66,6 +67,12 @@ app.layout = html.Div(style={
 
 @app.callback(
     Output("div", "children"),
+    Output("input1","value"), 
+    Output("input2","value"), 
+    Output("input3","value"), 
+    Output("input4","value"), 
+    Output("input5","value"), 
+    Output("input6","value"), 
     Input("button1", "n_clicks"),
     State("input1", "value"),
     State("input2", "value"),
@@ -82,5 +89,15 @@ def save(n_clicks, name,math, science, social,english,tamil):
         conn.commit()
         conn.close()
         return f"Saved: {name} marks"
-    return ""
+    return "",dash.no_update,dash.no_update, dash.no_update, dash.no_update, dash.no_update,dash.no_update
+
+
+
+
+
+
+
+
+
+
 
