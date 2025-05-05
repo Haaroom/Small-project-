@@ -16,4 +16,5 @@ a.layout=html.Div(style=style1,
         style_table={"overflow":"scroll"}, 
         style_header={"fontWeight":"bold","fontSize":"20px","color":"white","textAlign":"center"},
         style_cell={"border":"10px solid white","color":"white","textAlign":"center"}),
-        html.A("back to home",href="/main")])
+        html.A("HOME",href="/main",style={"height":"30px","width":"100px","backgroundColor":"black","color":"white","borderRadius":"10px","textDecoration":"none"})
+])
