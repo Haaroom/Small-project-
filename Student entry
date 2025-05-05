@@ -53,7 +53,7 @@ app.layout = html.Div(style={
         dcc.Input(id="input3", placeholder="ID", type="number", style=style1),
         html.Br(),
         html.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroundColor":"black","color":"black","borderRadius":"10px"}),
-        html.A("HOME",style={"height":"30px","width":"100px","backgroundColor":"black","color":"white","borderRadius":"10px","textDecoration":"none"})
+        html.A("HOME",href="/main",style={"height":"30px","width":"100px","backgroundColor":"black","color":"white","borderRadius":"10px","textDecoration":"none"})
         html.Br(), html.Br(),
         html.Div(id="div")
     ])
