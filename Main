@@ -7,8 +7,22 @@ style1={"height":"50px",
          "display":"flex", 
          "alignItems":"center", 
          "justifyContent":"center", 
-         "color":"white"}
-
+         "color":"white",
+         "fontSize":"40px"}
+style2={"height":"700px", 
+        "width":"100%", 
+        "display":"flex", 
+        "flexDirection":"row", 
+        "gap":"10px"}
+style3={ "height":"200px", 
+         "flexDirection":"column", 
+         "justifyContent":"space-evenly"
+         }
+style4={ "height":"180px", 
+         "width":"40%", 
+         "backgroundColor":"black", 
+         "color":"white"
+         }
 
 a.layout=html.Div( 
    children=[html.Div([html.H1("STUDENTS DATA MANAGEMENT")]), 
