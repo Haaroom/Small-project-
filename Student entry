@@ -60,6 +60,9 @@ app.layout = html.Div(style={
 
 @app.callback(
     Output("div", "children"),
+    Output("input1", "children"),
+    Output("input2", "children"),
+    Output("input3", "children"),
     Input("button1", "n_clicks"),
     State("input1", "value"),
     State("input2", "value"),
@@ -73,7 +76,7 @@ def save(n_clicks, name, age, id):
         conn.commit()
         conn.close()
         return f"Saved: {name}, Age {age}, ID {id}"
-    return " "
+    return " ",dash.no_update,dash.no_update,dash.no_update
 
 
 
