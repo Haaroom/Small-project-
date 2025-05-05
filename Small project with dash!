@@ -3,8 +3,6 @@ from dash import html, dcc, Input, Output, State
 import dash_bootstrap_components as dbc
 import sqlite3
 import os
-
-# Create DB if it doesn't exist
 if not os.path.exists("students.db"):
     conn = sqlite3.connect("students.db")
     cursor = conn.cursor()
@@ -53,7 +51,7 @@ app.layout = html.Div(style={
         dcc.Input(id="input2", placeholder="Age", type="number", style=style1),
         dcc.Input(id="input3", placeholder="ID", type="number", style=style1),
         html.Br(),
-        dcc.Button("Save", id="button1", n_clicks=0),
+        dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"),
         html.Br(), html.Br(),
         html.Div(id="div")
     ])
@@ -75,18 +73,7 @@ def save(n_clicks, name, age, id):
         conn.close()
         return f"Saved: {name}, Age {age}, ID {id}"
     return ""
-
 if __name__ == "__main__":
-    app.run_server(port=8051)
+    app.run(port=8051)
 
-
----
-
-This fully works. Open in browser:
-http://127.0.0.1:8051
-
-
----
-
-Would you like to extend this app to also display the registered students in a table below?
 
