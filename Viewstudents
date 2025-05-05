@@ -1,1 +1,20 @@
-
+import pandas as pd 
+import dash 
+from dash import dash_table,html,dcc 
+import dash_bootstrap_components as dbc
+import sqlite3 
+conn=sqlite3.connect('students.db') 
+df=pd.read_sql_query("SELECT * FROM studentsdata",conn) 
+a=dash.Dash(external_stylesheets=[dbc.themes.CYBORG]) 
+a.register_page(href="/viewmarks")
+style1={"display":"flex", "alignItems":"center", "justifyContent":"center", "gap":"10px"}
+style2={"height":"40px","width":"80%","boxShadow":"10px 10px grey","borderRadius":"10px","color":"white"}
+a.layout=html.Div(style=style1, 
+     children=[html.Div(style=style2[html.H1("STUDENTS MARKS")]),
+        dash_table.DataTable(
+        data = df.to_dict('records'), columns=[{'name':i,'id':i}for i in df. columns], 
+        style_table={"overflow":"scroll"}, 
+        style_header={"fontWeight":"bold","fontSize":"20px","color":"white","textAlign":"center"},
+        style_cell={"border":"10px solid white","color":"white","textAlign":"center"}),
+        html.A("HOME",href="/main",style={"height":"30px","width":"100px","backgroundColor":"black","color":"white","borderRadius":"10px","textDecoration":"none"})
+])
