@@ -41,7 +41,7 @@ style2 = {
     "padding": "20px"
 }
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
-dash.register_page(__name__, path="/marks/") 
+dash.register_page(__name__, path="/marks") 
 
 app.layout = html.Div(style={
     "display": "flex",
@@ -58,7 +58,7 @@ app.layout = html.Div(style={
         dcc.Input(id="input5", placeholder="english", style=style1),
         dcc.Input(id="input6", placeholder="tamil", style=style1),        
         html.Br(),
-        dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"),
+        dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"}),
         html.Br(), html.Br(),
         html.Div(id="div")
     ])
@@ -78,7 +78,7 @@ def save(n_clicks, name,math, science, social,english,tamil):
     if n_clicks > 0 and name and math and science and social and english and tamil:
         conn = sqlite3.connect('students.db')
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO studentsmarks (name, math,science, social, english, tamil) VALUES (?,?,?,?,?,?)", (name,math,science social,english, tamil)) 
+        cursor.execute("INSERT INTO studentsmarks (name, math,science, social, english, tamil) VALUES (?,?,?,?,?,?)", (name,math,science, social,english, tamil)) 
         conn.commit()
         conn.close()
         return f"Saved: {name} marks"
