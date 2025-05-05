@@ -40,13 +40,14 @@ a.layout=html.Div(style={"display":"flex",
     dcc.Button("save",id="button1",n_clicks=0) ]) 
     ]) 
 @a.callback(Output("div","children"), Input("button1","n_clicks"), 
-           State("input1","value"), State("input2", "value"),State("input3", "value")) 
+    
+State("input1","value"), State("input2", "value"),State("input3", "value")) 
 def save(n_clicks,name,age,id) :
     if n_clicks> 0 :
        a=sqlite3.connect('students.db') 
        b=A.cursor() 
-       b.execute( INSERT INTO students.db('name','age','id') 
-                  VALUES (name,age,id))
+       b.execute( "INSERT INTO students.db('name','age','id') 
+                  VALUES (?,?,?)"(name, age, id)) 
       a.commit()
       a.close()
       return html.Div("saved") 
