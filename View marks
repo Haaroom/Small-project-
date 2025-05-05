@@ -3,11 +3,11 @@ import dash
 from dash import dash_table,html,dcc 
 import sqlite3 
 conn=sqlite3.connect('students.db') 
-df=pd.read_sql_query(select*from studentmarks, conn) 
+df=pd.read_sql_query("SELECT * FROM studentmarks",conn) 
 a=dash.Dash(external_stylesheets=[dbc.themes.CYBORG) 
 a.register_page(href="/view marks/")
 style1={"display":"flex", "alignItems":"center", "justifyContent":"center", "gap":"10px"}
-style2={"height":"40px","width":"80%","boxShadow":"10px 10px grey","borederRadius":"10px","color":"white"}
+style2={"height":"40px","width":"80%","boxShadow":"10px 10px grey","borderRadius":"10px","color":"white"}
 a.layout=html.Div(style=style1, 
      children=[html.Div(style=style2[html.H1("STUDENTS MARKS")]),
         dash_table.DataTable(
