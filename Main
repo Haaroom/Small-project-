@@ -1,0 +1,15 @@
+import dash 
+from dash import dcc,Input,Output,State,html
+import dash_bootstrap_components as dbc 
+a=dash.Dash(pages=True,external_stylesheets=[) 
+a.layout=html.Div( 
+   children=[html.Div([html.H1("STUDENTS DATA MANAGEMENT")]), 
+   html.Div([ 
+       html.Div([html.A("REGISTER",href="/studentsdata"),
+       html.H2("click this to enter a new student ( data requires are name,age,student id)")]), 
+       html.Div([html.A("REGISTER",href="/marks"),
+       html.H2("click this to enter the marks of a certain student Or a group of students(don't forget to click save)")]), 
+       html.Div([ html.A("REGISTER",href="/viewmarks"),
+       html.H2("click this to view the marks of the students")]), 
+       html.Div([ html.A("REGISTER",href="/studentsdata"), ]) ]) ])
+                     
