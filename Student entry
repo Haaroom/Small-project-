@@ -38,6 +38,7 @@ style2 = {
     "padding": "20px"
 }
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
+dash.page_registration (href="/studentsreg") 
 
 app.layout = html.Div(style={
     "display": "flex",
@@ -51,7 +52,7 @@ app.layout = html.Div(style={
         dcc.Input(id="input2", placeholder="Age", type="number", style=style1),
         dcc.Input(id="input3", placeholder="ID", type="number", style=style1),
         html.Br(),
-        dcc.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"white","borderRadius":"10px"}),
+        html.Button("Save", id="button1", n_clicks=0,style={"height":"30px","width":"100px","backgroudColor":"black","color":"black","borderRadius":"10px"}),
         html.Br(), html.Br(),
         html.Div(id="div")
     ])
@@ -72,8 +73,7 @@ def save(n_clicks, name, age, id):
         conn.commit()
         conn.close()
         return f"Saved: {name}, Age {age}, ID {id}"
-    return ""
-if __name__ == "__main__":
-    app.run(port=8051)
+    return " "
+
 
 
