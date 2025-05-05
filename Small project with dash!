@@ -1,0 +1,25 @@
+import dash
+from dash import html,dash_table,dcc, Input, Output, Store
+import sqlite3 
+import pandas as pd 
+import plotly.graph.objs as go 
+a=dash.Dash() 
+a.layout=html.Div([ 
+  html. Div([ 
+    html.H1("students data registration")
+    html.H1("name") 
+    dcc.input(id="input1", value="name",place holder="enter your name") 
+    html.H1("age") 
+    dcc.input(id="input2",value="age",place holder="enter your age") 
+    html.H1("student_id") 
+    dcc.input(id="input3",value="id",place holder="enter your id") 
+    html.Div(id="div"[
+    dcc.Button("save",id="button1",n_clicks=0) ]) 
+    ]) 
+@a.callback(Output("div","children"), Input("button1","n_clicks"), 
+           store("input1","name"), store("input2", "age"), store("input3", " id")) 
+def save(n_clicks,name,age,id) :
+    if n_clicks> 0 :
+       sqlite
+       
+
