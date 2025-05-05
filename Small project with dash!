@@ -1,36 +1,55 @@
 import dash
-from dash import html,dcc, Input, Output, Store
+from dash import html,dcc, Input, Output, State
 import sqlite3  
 import plotly.graph.objs as go 
+import os
+if not os.path.exists("students.db") :
+  a=sqlite3.connect("students.db")
+  b=a.cursor()
+  b.execute('''data CREATE TABLE studentsdata  (name TEXT NOT NULL INDEX ,age INTEGER NOT NULL , id INTEGER NOT NULL)''')
+  a.commit()
+  a.close()
 style1={"height":"30px",
          "width":"80%",
         "backgroundColor":"white",
-         "color":"black", 
-         "justifyContent":"flexStart"
+         "color":"black",
+         "display":"flex",
+         "justifyContent":"flex-start",
+         "borderRadius":"20px",
          }
-style2={"
-a=dash.Dash() 
-a.layout=html.Div([ 
-  html. Div([ 
+style2={"height":"500px",
+        "width":"300px",
+         "borderRadius":"10px",
+        "backgroundColor":"rgb(51, 42, 41)",
+         "display":"flex",
+        "flexDirection":"row",
+        "alignItems":"center",
+        "justifyContent":"space-evenly",
+        "boxShadow":"10px 10px white"
+        }
+a=dash.Dash(external_stylesheets=[dbc.theme.CYBORG]) 
+a.layout=html.Div(style={"display":"flex",
+                  "alignItems":"center",
+                  "justifyContent":"center"}[ 
+  html. Div(style=style2[ 
     html.H1("students data registration")
-    html.H1("name") 
-    dcc.input(id="input1", value="name",place holder="enter your name") 
-    html.H1("age") 
-    dcc.input(id="input2",value="age",place holder="enter your age") 
-    html.H1("student_id") 
-    dcc.input(id="input3",value="id",place holder="enter your id") 
+    dcc.Input(id="input1", value="name",place holder="name",style=style1) 
+    dcc.Input(id="input2",value="age",place holder="age",style=style1) 
+    dcc.Input(id="input3",value="id",place holder="id",style=style1) 
     html.Div(id="div"[
     dcc.Button("save",id="button1",n_clicks=0) ]) 
     ]) 
 @a.callback(Output("div","children"), Input("button1","n_clicks"), 
-           store("input1","name"), store("input2", "age"), store("input3", " id")) 
+           State("input1","value"), State("input2", "value"),State("input3", "value")) 
 def save(n_clicks,name,age,id) :
     if n_clicks> 0 :
        a=sqlite3.connect('students.db') 
-       b=sqlite3.cursor() 
+       b=A.cursor() 
        b.execute( INSERT INTO students.db('name','age','id') 
-                  VALUES (name,age,id)) 
-      return html.Div(["saved"]) 
+                  VALUES (name,age,id))
+      a.commit()
+      a.close()
+      return html.Div("saved") 
 a.run(port=8051) 
 
        
