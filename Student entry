@@ -38,7 +38,7 @@ style2 = {
     "padding": "20px"
 }
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
-dash.page_registration (href="/studentsreg") 
+dash.page_registration (path="/studentsreg") 
 
 app.layout = html.Div(style={
     "display": "flex",
