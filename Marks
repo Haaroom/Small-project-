@@ -88,8 +88,8 @@ def save(n_clicks, name,math, science, social,english,tamil):
         cursor.execute("INSERT INTO studentsmarks (name, math,science, social, english, tamil) VALUES (?,?,?,?,?,?)", (name,math,science, social,english, tamil)) 
         conn.commit()
         conn.close()
-        return f"Saved: {name} marks"
-    return "",dash.no_update,dash.no_update, dash.no_update, dash.no_update, dash.no_update,dash.no_update
+        return f"Saved: {name}", "", "", "", "", ""
+    return ""
 
 
 
