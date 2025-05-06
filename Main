@@ -1,40 +1,47 @@
 import dash 
 from dash import dcc,Input,Output,State,html
 import dash_bootstrap_components as dbc 
-a=dash.Dash(pages=True,external_stylesheets=[dbc.themes.DARKLY]) 
-style1={"height":"50px", 
+a=dash.Dash(use_pages=True,external_stylesheets=[dbc.themes.DARKLY]) 
+style1={"height":"50px", #header
          "width":"100%", 
          "display":"flex", 
          "alignItems":"center", 
          "justifyContent":"center", 
          "color":"white",
          "fontSize":"40px"}
-style2={"height":"700px", 
+style2={"height":"700px", #next 
         "width":"100%", 
         "display":"flex", 
         "flexDirection":"row", 
         "gap":"10px"}
-style3={ "height":"200px", 
+style3={ "height":"200px", #2 in 2 
          "flexDirection":"column", 
          "justifyContent":"space-evenly"
          }
-style4={ "height":"180px", 
+style4={ "height":"180px", #2 in 3 
          "width":"40%", 
          "backgroundColor":"black", 
          "color":"white"
          }
+style5={"height":"40px",
+        "width":"80px",
+        "textDecoration":"none",
+        "borderRadius":"10px",
+        "display":"flex",
+        "alignItems":"center",
+        "justifyContent":"center"}
 
 a.layout=html.Div( 
-   children=[html.Div([html.H1("STUDENTS DATA MANAGEMENT")]), 
-   html.Div([ 
-    html.Div([
-       html.Div([html.A("REGISTER",href="/studentsdata"),
+   children=[html.Div(style=style1[html.H1("STUDENTS DATA MANAGEMENT")]), 
+   html.Div(style=style2[ 
+    html.Div(style=style3[
+       html.Div(style=style4[html.A("REGISTER",href="/studentsdata",stye=style5),
        html.H2("click this to enter a new student ( data requires are name,age,student id)")]), 
-       html.Div([html.A("REGISTER",href="/marks"),
+       html.Div(style=style4[html.A("REGISTER",href="/marks",stye=style5),
        html.H2("click this to enter the marks of a certain student Or a group of students(don't forget to click save)")])]), 
-   html.Div([
-       html.Div([ html.A("REGISTER",href="/viewmarks"),
+   html.Div(style=style3[
+       html.Div(style=style4[ html.A("REGISTER",href="/viewmarks",stye=style5),
        html.H2("click this to view the marks of the students")]), 
-       html.Div([ html.A("REGISTER",href="/studentsdata"),
+       html.Div(syle=style4[ html.A("REGISTER",href="/studentsdata",stye=style5),
        html.H2("click this to view the datas of the students registeres")]) ]) ]) ])
                      
